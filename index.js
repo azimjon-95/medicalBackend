@@ -17,10 +17,7 @@ mongoose
 
 // Router import
 const User = require("./routes/doctorRoutes");
-const Room = require("./routes/roomRoutes");
 app.use("/user", User);
-app.use("/rooms", Room);
-
 
 
 app.get("/", async (req, res) => {
