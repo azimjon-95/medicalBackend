@@ -1,9 +1,8 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const doctorModel = require("../models/doctorModel");
+
 //register callback
-
-
 const registerController = async (req, res) => {
   try {
     const exisitingUser = await doctorModel.findOne({ login: req.body.login });
@@ -13,10 +12,10 @@ const registerController = async (req, res) => {
         .status(200)
         .send({ message: "User Already Exist", success: false });
     }
-    const password = req.body.password;
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-    req.body.password = hashedPassword;
+    // const password = req.body.password;
+    // const salt = await bcrypt.genSalt(10);
+    // const hashedPassword = await bcrypt.hash(password, salt);
+    // req.body.password = hashedPassword;
     const newUser = new doctorModel(req.body);
     await newUser.save();
     res.status(201).send({ message: "Register Sucessfully", success: true });
@@ -47,14 +46,13 @@ const loginController = async (req, res) => {
     }
 
     const token = jwt.sign({ id: exactAdmin._id }, process.env.JWT_SECRET)
-    res.status(200).json({ message: "Login Success", success: true, token ,e});
+    res.status(200).json({ message: "Login Success", success: true, token, exactAdmin });
   }
   catch (error) {
     console.log(error);
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
   }
 };
-
 
 //GET ALL DOC
 const getAllDocotrsController = async (req, res) => {
@@ -74,8 +72,6 @@ const getAllDocotrsController = async (req, res) => {
     });
   }
 };
-
-
 
 module.exports = {
   loginController,
