@@ -47,8 +47,9 @@ const loginController = async (req, res) => {
     }
 
     const token = jwt.sign({ id: exactAdmin._id }, process.env.JWT_SECRET)
-    res.status(200).json({ message: "Login Success", success: true, token ,e});
+    res.status(200).json({ message: "Login Success", success: true, token, exactAdmin });
   }
+
   catch (error) {
     console.log(error);
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
