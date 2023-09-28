@@ -26,7 +26,15 @@ const clientSchema = new Schema({
     paySumm: {
         type: Number,
         required: [true, "default: 0 , before other summ"]
-    }
+    },
+    doctorFirstName: {
+        type: String,
+        required: [true, "firstname is required"]
+    },
+    doctorLastName: {
+        type: String,
+        required: [true, "lastname is required"]
+    },
 })
 
 const ClientModel = model('client', clientSchema)

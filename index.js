@@ -16,10 +16,10 @@ mongoose
   .catch(() => console.log("MongoDB is not connected".bgRed.white));
 
 // Router import
-const User = require("./routes/doctorRoutes");
+const Doctor = require("./routes/doctorRoutes");
 const Client = require("./routes/client");
 const Room = require("./routes/roomRoutes");
-app.use("/user", User);
+app.use("/admin", Doctor);
 app.use("/rooms", Room);
 app.use("/client", Client);
 
@@ -29,6 +29,6 @@ app.get("/", async (req, res) => {
   res.json("App is running");
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => console.log(`${PORT} in listening`));
 
