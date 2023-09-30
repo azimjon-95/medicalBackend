@@ -45,7 +45,8 @@ const getOneClient = async (req, res) => {
 // CRATE CLIENT || NEW CLIENT
 const newClient = async (req, res) => {
     try {
-        const createProduct = await ClientModel.create(req.body)
+        // res.send(req.body)
+        const createProduct = new ClientModel(req.body)
         if (!createProduct) {
             return res.status(400).json({ success: false, message: "Can not create", data: createProduct });
         }

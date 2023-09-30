@@ -73,9 +73,19 @@ const getAllDocotrsController = async (req, res) => {
   }
 };
 
+const deleteDoctor = async (req, res) => {
+  try {
+    let deletedDoctor = await doctorModel.findByIdAndDelete(req.params._id);
+    res.status(200).json({ success: true, message: "Deleted", data: deletedDoctor });
+  }
+  catch {
+    res.json({ state: false, msg: "Server error", innerData: null })
+  }
+}
+
 module.exports = {
   loginController,
   registerController,
   getAllDocotrsController,
-
+  deleteDoctor
 };

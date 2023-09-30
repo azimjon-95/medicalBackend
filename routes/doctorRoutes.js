@@ -3,6 +3,7 @@ const {
   loginController,
   registerController,
   getAllDocotrsController,
+  deleteDoctor
 } = require("../controllers/doctorCtrl");
 // const authMiddleware = require("../middlewares/authMiddleware");
 
@@ -20,6 +21,8 @@ router.post("/register", registerController);
 //GET ALL DOC
 router.get("/getAllDoctors", getAllDocotrsController);
 
+// DELETE DOCTOR
+router.delete('/delete/:_id', deleteDoctor)
 
 //APply Doctor || POST
 // router.post("/apply-doctor", authMiddleware, applyDoctorController);
