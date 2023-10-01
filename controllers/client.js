@@ -20,7 +20,7 @@ const getAllClient = async (req, res) => {
         console.log(err);
         res.status(500).send({
             success: false,
-            error,
+            err,
             message: "Error While Fetching Doctor",
         });
     }
@@ -49,15 +49,15 @@ const newClient = async (req, res) => {
         if (!createProduct) {
             return res.status(400).json({ success: false, message: "Can not create", data: createProduct });
         }
-        const saveProduct = await createProduct.save();
-        res.status(200).json({
-            success: true,
-            message: "client saved",
-            data: saveProduct
+        const newUser = new ClientModel(req.body);
+        await newUser.save();
+        res.status(201).send({ message: "User Sucessfully", success: true });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: `user controller ${error.message}`,
         });
-    }
-    catch {
-        res.json({ success: false, message: "Server error", data: null })
     }
 }
 

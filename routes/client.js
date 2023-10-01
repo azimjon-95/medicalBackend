@@ -15,7 +15,7 @@ router.get('/all', getAllClient)
 router.get('/:_id', getOneClient)
 
 // CRATE CLIENT || NEW CLIENT
-router.post('/', newClient)
+router.post('/add', newClient)
 
 // DELETE CLIENT
 router.delete('/:_id', deleteClient)

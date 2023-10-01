@@ -12,8 +12,8 @@ const clientSchema = new Schema({
     phone: {
         type: String,
         required: [true, "phone number is required"],
-        maxLength: 9,
-        minLength: 9
+        maxLength: 12,
+        minLength: 8
     },
     choseDoctor: {
         type: String,
