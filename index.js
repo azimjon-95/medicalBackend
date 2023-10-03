@@ -29,6 +29,6 @@ app.get("/", async (req, res) => {
   res.json("App is running");
 });
 
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => console.log(`${PORT} in listening`));
 

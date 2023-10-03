@@ -1,57 +1,51 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require('mongoose');
 
-const doctorSchema = new mongoose.Schema(
-  {
-    userId: {
-      type: String,
-    },
-    firstName: {
-      type: String,
-      required: [true, "first name is required"],
-    },
-    lastName: {
-      type: String,
-      required: [true, "last name is required"],
-    },
-    phone: {
-      type: String,
-      required: [true, "phone no is required"],
-    },
-    email: {
-      type: String,
-      required: [true, "email is required"],
-    },
-    address: {
-      type: String,
-      required: [true, "address is required"],
-    },
-    specialization: {
-      type: String,
-      // required: [false, "specialization is require"],
-    },
-    experience: {
-      type: String,
-      // required: [false, "experience is required"],
-    },
-    feesPerCunsaltation: {
-      type: Number,
-      // required: [false, "fee is required"],
-    },
-    login: {
-      type: String,
-      required: [true, "login is require"],
-    },
-    password: {
-      type: String,
-      required: [true, "password is require"],
-    },
-    docORrecep: {
-      type: String,
-      required: [true, " or reception is require"],
-    },
+const clientSchema = new Schema({
+  firstname: {
+    type: String,
+    required: [true, "firstname is required"]
   },
-  { timestamps: true }
-);
+  lastname: {
+    type: String,
+    required: [true, "lastname is required"]
+  },
+  phone: {
+    type: String,
+    required: [true, "phone number is required"],
+    maxLength: 9,
+    minLength: 9
+  },
+  choseDoctor: {
+    type: String,
+    required: [true, "doctor is required"],
+  },
+  payState: {
+    type: Boolean,
+    required: [true, "true or false value is required"]
+  },
+  paySumm: {
+    type: Number,
+    required: [true, "default: 0 , before other summ"]
+  },
+  doctorFirstName: {
+    type: String,
+    required: [true, "firstname is required"]
+  },
+  doctorLastName: {
+    type: String,
+    required: [true, "lastname is required"]
+  },
+  sickname: {
+    type: String,
+  },
+  retsept: {
+    type: String,
+  },
+  view: {
+    type: Boolean,
+  }
 
-const doctorModel = mongoose.model("doctors", doctorSchema);
-module.exports = doctorModel;
+})
+
+const ClientModel = model('client', clientSchema)
+module.exports = ClientModel
