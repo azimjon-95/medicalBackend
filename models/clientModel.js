@@ -12,8 +12,8 @@ const clientSchema = new Schema({
     phone: {
         type: String,
         required: [true, "phone number is required"],
-        maxLength: 12,
-        minLength: 8
+        maxLength: 9,
+        minLength: 9
     },
     choseDoctor: {
         type: String,
@@ -35,6 +35,16 @@ const clientSchema = new Schema({
         type: String,
         required: [true, "lastname is required"]
     },
+    sickname: {
+        type: String,
+    },
+    retsept: {
+        type: String,
+    },
+    view: {
+        type: Boolean,
+    }
+
 })
 
 const ClientModel = model('client', clientSchema)
